@@ -18,11 +18,7 @@ class Coche{
         $this->color = $color;
     }
     
-    public function setColor($color){
-        $this->color=$color;
-    }
-    
-    public function crearCoche(){
+    public function crearArrayCoche(){
         return get_object_vars($this);
     }
 
