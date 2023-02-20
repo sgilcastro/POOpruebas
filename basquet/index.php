@@ -1,107 +1,68 @@
 <?php
+/* 
+Necessitem enregistrar informació de jugadors de basket.
+
+Nom,Edad,Alçada,Pes,Posició(Base,Escolta,Aler,Aler-Pivot,Pivot)
+
+Enregistrarem informació d'un conjunt de jugadors(8 en total).
+
+Mostra el nom i l'alçada dels jugadors que pasen dels 2 metres d'alçada.
+Mostra el nom i l'edad dels jugadors que tenen menys de 21 anys.
+*/
 
 require("Jugador.php");
 
-$jugadores1 = array();
-$jugadores2 = array();
-$jugadores3 = array();
+$jugadores = [];
 
-$jugador1 = new Jugador("Susana", 31, 1.90, 85, "alero");
-$jugador2 = new Jugador("Antonio", 18, 2.18, 96, "base");
-$jugador3 = new Jugador("Pepito", 21, 2.10, 80,'escolta');
-$jugador4 = new Jugador("Roberto", 19, 1.99, 78,'alero');
-$jugador5 = new Jugador("Pepa", 28, 1.96, 90,'alapivot');
-$jugador6 = new Jugador("Ismael", 23, 2.12, 98,'ala pivot');
-$jugador7 = new Jugador("Eduardo", 20, 2.0, 98,'ala pivot');
-$jugador8 = new Jugador("Jose", 16, 2.05, 98,'ala pivot');
+$jugador1 = new Jugador("Pepe",22,2.10,85,"Alero");
+$jugador2 = new Jugador("Antonio",18,1.91,75,"Pivot");
+$jugador3 = new Jugador("Frank",22,2.10,85,"Alero");
+$jugador4 = new Jugador("Jose",19,2.00,75,"Pivot");
+$jugador5 = new Jugador("Marcelo",22,1.99,75,"Pivot");
+$jugador6 = new Jugador("Luis",27,1.98,75,"Pivot");
+$jugador7 = new Jugador("Sergio",25,2.05,75,"Pivot");
+$jugador8 = new Jugador("Juan Carlos",20,2.10,75,"Pivot");
 
+//var_dump($jugador1);
+//echo '<br><br>';
+
+$jugadores =[$jugador1,$jugador2,$jugador3,$jugador4,$jugador5,$jugador6,$jugador7,$jugador8];
+
+
+//var_dump($jugadores);
 /*
-print_r($jugador1);
 echo '<br><br>';
-print_r($jugador1->arrayConvert());
+echo $jugadores[0]->getNombre();
 echo '<br><br>';
-var_dump($jugador1);
+echo $jugadores[0]->getEdad();
 echo '<br><br>';
-var_dump(($jugador1->arrayConvert()));
+echo $jugadores[0]->getAltura();
+echo '<br><br>';
+echo $jugadores[1]->getNombre();
+echo '<br><br>';
+echo $jugadores[1]->getEdad();
+echo '<br><br>';
+echo $jugadores[1]->getAltura();
+echo '<br><br>';
 */
 
-$jugadores2 = [
-    $jugador1->arrayConvert(), 
-    $jugador2->arrayConvert(), 
-    $jugador3->arrayConvert(), 
-    $jugador4->arrayConvert(), 
-    $jugador5->arrayConvert(),
-    $jugador6->arrayConvert(),
-    $jugador7->arrayConvert(),
-    $jugador8->arrayConvert()
-];
-/*
-print_r($jugadores2);
-echo '<br>';
-echo '<br>';
+$x = count($jugadores);
+//echo $x."<br><br>";
 
-print_r($jugadores2[1]);
-echo '<br>';
-echo '<br>';
-
-echo "<br>";
-
-foreach (($jugadores2) as $jugadores => $jugador) {
-    echo $jugadores.' => '.$jugador.'<br>';
-
-foreach (($jugadores2[1]) as $clave => $valor) {
-    echo $clave.' => '.$valor.'<br>';
-}
-}
-print_r($jugadores2[1]['altura']);
-echo '<br>';
-echo '<br>';
-*/
-?>
-
-<h1>Jugadores mas altos de 2 metros</h1>
-
-<?php
-
-
-$x = count($jugadores2);
-$i = 0;
-
-//echo $i."<br>";
-
-while ($i<$x){
-    
-    //echo $i." <br>";
-    if ($jugadores2[$i]['altura']>2.0){
-        echo $jugadores2[$i]['nombre']." - ".$jugadores2[$i]['altura']."<br>";
-        $i++;
-    } else {
-        $i++;
+echo "Jugadores menores de 21 años:<br><br>";
+for ($i=0;$i<$x;$i++){
+    //echo $i."<br>";
+    if ($jugadores[$i]->getEdad()<21){
+        echo $jugadores[$i]->getNombre(). " tiene ". $jugadores[$i]->getEdad()." años.<br>"; 
     }
-
 }
-
-?>
-
-<h1>Jugadores menores de 21 años</h1>
-
-<?php
-
-$j=0;
-
-while ($j<$x){
-    
-    //echo $j." <br>";
-    if ($jugadores2[$j]['edad']<21){
-        echo $jugadores2[$j]['nombre']." - ".$jugadores2[$j]['edad']."<br>";
-        $j++;
-    } else {
-        $j++;
+echo "<br><br>Jugadores más altos de 2 metros:<br><br>";
+for ($i=0;$i<$x;$i++){
+    //echo $i."<br>";
+    if ($jugadores[$i]->getAltura()>2.00){
+        echo $jugadores[$i]->getNombre(). " mide ". $jugadores[$i]->getAltura()." metros.<br>"; 
     }
-
 }
-
-
 
 
 ?>
